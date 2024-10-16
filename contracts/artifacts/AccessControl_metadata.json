@@ -1,0 +1,198 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_dataStorage",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "NotAuthorized",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "RequestAlreadyExists",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "RequestDoesNotExist",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "researcher",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "sampleId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amountOffered",
+						"type": "uint256"
+					}
+				],
+				"name": "AccessRequestCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "requestId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "enum AccessControl.RequestStatus",
+						"name": "newStatus",
+						"type": "uint8"
+					}
+				],
+				"name": "AccessRequestStatusChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_sampleId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amountOffered",
+						"type": "uint256"
+					}
+				],
+				"name": "createAccessRequest",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "dataStorage",
+				"outputs": [
+					{
+						"internalType": "contract DataStorage",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_requestId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum AccessControl.RequestStatus",
+						"name": "_newStatus",
+						"type": "uint8"
+					}
+				],
+				"name": "modifyRequestStatus",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_requestId",
+						"type": "uint256"
+					}
+				],
+				"name": "retrieveData",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/AccessControl.sol": "AccessControl"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/AccessControl.sol": {
+			"keccak256": "0x56639f0a5b38dd3d546c00c1e32db224f50985af24460b4f1632c8fe0c16eb3e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4a43088d6a7336e720431803107f166e80f7244b31cd4ea455c3cd15832b2de1",
+				"dweb:/ipfs/QmSQhdvtFLcn9ZLeeGQ5YnfB9s89e7339aqADnBY8boyhF"
+			]
+		},
+		"contracts/DataStorage.sol": {
+			"keccak256": "0xce84f328193f62d63206a6509a2fb785e7d2be205592cb30e40a0e14ca02f143",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://08716d8d86282ea2e3777ae78e122ad9ee31914fd32ff8229f7bb7f2734c8b55",
+				"dweb:/ipfs/QmQVspVbvvC2N5pizqMu1WaFKXpSDngGRX6wqFkd1QRx8R"
+			]
+		}
+	},
+	"version": 1
+}

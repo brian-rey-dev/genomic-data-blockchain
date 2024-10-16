@@ -1,0 +1,379 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "AccessControlOnly",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "DataNotRegistered",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "DataReferenceCannotBeEmpty",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidInitialization",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotAuthorized",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotInitializing",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "SampleAlreadyRegistered",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "patient",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "sampleId",
+						"type": "uint256"
+					}
+				],
+				"name": "DataRegistered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "patient",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "sampleId",
+						"type": "uint256"
+					}
+				],
+				"name": "DataUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "version",
+						"type": "uint64"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "accessControlContract",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_sampleId",
+						"type": "uint256"
+					}
+				],
+				"name": "getData",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_patient",
+						"type": "address"
+					}
+				],
+				"name": "getSampleIdsByPatient",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_accessControlContract",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_dataReference",
+						"type": "string"
+					}
+				],
+				"name": "registerData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "sampleIdToPatient",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_sampleId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_dataReference",
+						"type": "string"
+					}
+				],
+				"name": "updateData",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Patients can register and update their genetic data, and authorized contracts can retrieve the data.",
+			"errors": {
+				"InvalidInitialization()": [
+					{
+						"details": "The contract is already initialized."
+					}
+				],
+				"NotInitializing()": [
+					{
+						"details": "The contract is not initializing."
+					}
+				]
+			},
+			"events": {
+				"DataRegistered(address,uint256)": {
+					"params": {
+						"patient": "The address of the patient registering the data.",
+						"sampleId": "The unique identifier of the genetic sample."
+					}
+				},
+				"DataUpdated(address,uint256)": {
+					"params": {
+						"patient": "The address of the patient updating the data.",
+						"sampleId": "The unique identifier of the genetic sample."
+					}
+				},
+				"Initialized(uint64)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"getData(uint256)": {
+					"details": "Only callable by the AccessControl contract.",
+					"params": {
+						"_sampleId": "The unique identifier of the genetic sample."
+					},
+					"returns": {
+						"_0": "The genetic data reference string."
+					}
+				},
+				"getSampleIdsByPatient(address)": {
+					"params": {
+						"_patient": "The address of the patient."
+					},
+					"returns": {
+						"_0": "An array of sample IDs owned by the patient."
+					}
+				},
+				"initialize(address)": {
+					"params": {
+						"_accessControlContract": "The address of the deployed AccessControl contract."
+					}
+				},
+				"registerData(string)": {
+					"details": "The sample ID must not have been registered before.",
+					"params": {
+						"_dataReference": "The reference to the genetic data (e.g., IPFS hash)."
+					}
+				},
+				"updateData(uint256,string)": {
+					"details": "Only the owner of the sample can update its data.",
+					"params": {
+						"_dataReference": "The new reference to the genetic data.",
+						"_sampleId": "The unique identifier of the genetic sample."
+					}
+				}
+			},
+			"title": "DataStorage Contract",
+			"version": 1
+		},
+		"userdoc": {
+			"errors": {
+				"AccessControlOnly()": [
+					{
+						"notice": "Error for unauthorized access by a non-AccessControl contract."
+					}
+				],
+				"DataNotRegistered()": [
+					{
+						"notice": "Error for attempting to update data for a non-registered sample ID."
+					}
+				],
+				"DataReferenceCannotBeEmpty()": [
+					{
+						"notice": "Error for providing an empty data reference."
+					}
+				],
+				"NotAuthorized()": [
+					{
+						"notice": "Error for unauthorized access by a non-owner."
+					}
+				],
+				"SampleAlreadyRegistered()": [
+					{
+						"notice": "Error for attempting to register an already registered sample ID."
+					}
+				]
+			},
+			"events": {
+				"DataRegistered(address,uint256)": {
+					"notice": "Emitted when genetic data is registered by a patient."
+				},
+				"DataUpdated(address,uint256)": {
+					"notice": "Emitted when genetic data is updated by a patient."
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"accessControlContract()": {
+					"notice": "The address of the AccessControl contract authorized to retrieve data."
+				},
+				"getData(uint256)": {
+					"notice": "Retrieves the genetic data reference for a given sample ID."
+				},
+				"getSampleIdsByPatient(address)": {
+					"notice": "Retrieves the sample IDs associated with a patient."
+				},
+				"initialize(address)": {
+					"notice": "Initializes the contract with the AccessControl contract address."
+				},
+				"registerData(string)": {
+					"notice": "Allows a patient to register their genetic data."
+				},
+				"sampleIdToPatient(uint256)": {
+					"notice": "Mapping from sample ID to the patient who owns it."
+				},
+				"updateData(uint256,string)": {
+					"notice": "Allows a patient to update their existing genetic data."
+				}
+			},
+			"notice": "Manages the registration and storage of genetic data references for patients.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/DataStorage.sol": "DataStorage"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0x631188737069917d2f909d29ce62c4d48611d326686ba6683e26b72a23bfac0b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7a61054ae84cd6c4d04c0c4450ba1d6de41e27e0a2c4f1bcdf58f796b401c609",
+				"dweb:/ipfs/QmUvtdp7X1mRVyC3CsHrtPbgoqWaXHp3S1ZR24tpAQYJWM"
+			]
+		},
+		"contracts/DataStorage.sol": {
+			"keccak256": "0xf2ca0ec710fca271f9ec584627b3c6cfce8f2bd66f1642e97094ac4032f2c27f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b93bafff1fe75f23fb5035ec397bc57c9a5ef9ad7ea7e8b15fab1812fde1e016",
+				"dweb:/ipfs/QmUr7ZwTEpt3dDNbpKmyuZwxKRpNAbDJcwkmCgGLc3cB9e"
+			]
+		}
+	},
+	"version": 1
+}
